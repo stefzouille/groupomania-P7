@@ -1,0 +1,8 @@
+node_module
+
+.env.local
+
+.env 
+*.jpg
+*.jpeg
+*.png
