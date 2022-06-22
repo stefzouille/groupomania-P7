@@ -92,3 +92,36 @@ exports.login = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }));
 };
+
+exports.delete = (req, res, next) => {
+  // que l user correspond a celui envoyé dans la requete 
+  User.findOne({ email: req.body.email })
+    .then(user => {
+      // si on a recuperer un user ou non 
+      if (!user) {
+        console.log('Utilisateur non trouvé !');
+        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+      }
+
+      // on compare le mdp envoyé avec le user recuperer
+      bcrypt.compare(req.body.password, user.password)
+        .then(valid => {
+          if (!valid) {
+            console.log('Mot de passe incorrect !');
+            return res.status(401).json({ error: 'Mot de passe incorrect !' });
+          }
+          res.status(200).json({
+            userId: user._id,
+            token: jwt.sign(
+              { userId: user._id },
+              // clé secrete simple pour dev uniquement
+              // pour la production on utilise une clé secrete beaucoup plus longue et plus aleatoire
+              `${process.env.SECRETKEY}`,
+              { expiresIn: '24h' }
+            )
+          });
+        })
+        .catch(error => { console.log(error); res.status(500).json({ error }) });
+    })
+    .catch(error => res.status(500).json({ error }));
+};
