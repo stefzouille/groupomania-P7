@@ -21,9 +21,16 @@
     "mongoose-unique-validator": "^3.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.16",
+    "nodemon": "^1.3.3",
     "password-validator": "^5.3.0",
     "sequelize": "^6.21.0"
   },
-  "devDependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefzouille/groupomania-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stefzouille/groupomania-backend/issues"
+  },
+  "homepage": "https://github.com/stefzouille/groupomania-backend#readme"
 }
