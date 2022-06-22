@@ -3,8 +3,9 @@ require('dotenv').config()
 // pour le cryprtage de mot de passe
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const db = require("../models");
+const User = db.user
 
-const User = require('../models/User');
 
 
 var passwordValidator = require('password-validator');
@@ -47,16 +48,16 @@ exports.signup = (req, res, next) => {
     // on recupere le mdp crypté/ hash du mdp
     .then(hash => {
       // enregistrement du nouveau user 
-      const user = new User({
+      const user = {
         email: req.body.email,
         password: hash
-      });
+      };
       // enregistrement dans la base de donnée
-      user.save()
+      User.create(user)
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-        .catch(error => res.status(400).json({ error }));
+        .catch(error => { console.log(error); res.status(400).json({ error }) });
     })
-    .catch(error => res.status(500).json({ error }));
+    .catch(error => { console.log(error); res.status(500).json({ error }) });
 };
 
 exports.login = (req, res, next) => {
@@ -65,6 +66,7 @@ exports.login = (req, res, next) => {
     .then(user => {
       // si on a recuperer un user ou non 
       if (!user) {
+        console.log('Utilisateur non trouvé !');
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
       }
 
@@ -72,6 +74,7 @@ exports.login = (req, res, next) => {
       bcrypt.compare(req.body.password, user.password)
         .then(valid => {
           if (!valid) {
+            console.log('Mot de passe incorrect !');
             return res.status(401).json({ error: 'Mot de passe incorrect !' });
           }
           res.status(200).json({
@@ -85,7 +88,7 @@ exports.login = (req, res, next) => {
             )
           });
         })
-        .catch(error => res.status(500).json({ error }));
+        .catch(error => { console.log(error); res.status(500).json({ error }) });
     })
     .catch(error => res.status(500).json({ error }));
 };

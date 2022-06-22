@@ -47,10 +47,14 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
+
+
 // servir le dossier image quand on fait une requete avec /images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 // pour la routes auth 
 app.use('/auth', userRoutes);
+
+
 
 // un écouteur d'évènements est également enregistré
 // consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console
