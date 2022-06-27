@@ -120,4 +120,34 @@ exports.delete = (req, res) => {
 }
 
 
+// update password of a user
+exports.update = (req, res) => {
+  // verifier que le mot de passe respecte les conditions
+  const validation = passwordSchema.validate(req.body.password);
+  if (!validation) {
+    // si le mot de passe n est pas valide
+    // on renvoie un message d erreur
+    // console.log('mot de passe non sécurisé')
+    // alert('mot de passe non sécurisé')
 
+    return res.status(400).json({ message: "Mot de passe non sécurisé !" })
+
+    // return res.status(400).json({ message: 'Le mot de passe doit respecter les conditions' })
+  }
+  // creation du hash du mdp defini sur 10tours
+  bcrypt.hash(req.body.password, 10)
+    // on recupere le mdp crypté/ hash du mdp
+    .then(hash => {
+      // enregistrement du nouveau user 
+      const user = {
+        password: hash
+      };
+      // enregistrement dans la base de donnée
+      User.update(user, {
+        where: { id: req.params.id }
+      })
+        .then(() => res.status(201).json({ message: 'Password changed !' }))
+        .catch(error => { console.log(error); res.status(400).json({ error }) });
+    })
+    .catch(error => { console.log(error); res.status(500).json({ error }) });
+}
