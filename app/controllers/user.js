@@ -51,6 +51,7 @@ exports.signup = (req, res, next) => {
     .then(hash => {
       // enregistrement du nouveau user 
       const user = {
+        userName: req.body.userName,
         email: req.body.email,
         password: hash,
         isAdmin: false
