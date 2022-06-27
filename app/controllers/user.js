@@ -52,7 +52,8 @@ exports.signup = (req, res, next) => {
       // enregistrement du nouveau user 
       const user = {
         email: req.body.email,
-        password: hash
+        password: hash,
+        isAdmin: false
       };
       // enregistrement dans la base de donnée
       User.create(user)
@@ -96,7 +97,7 @@ exports.login = (req, res, next) => {
 };
 
 
-// Delete a Tutorial with the specified id in the request
+// Delete a User with the specified id in the request
 exports.delete = (req, res) => {
 
   const id = req.params.id;
