@@ -98,70 +98,26 @@ exports.login = (req, res, next) => {
 
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
-  // que l user correspond a celui envoyé dans la requete 
-  User.findOne({ id: req.body.id })
-    .then(user => {
-      // si on a recuperer un user ou non 
-      if (!user) {
-        console.log('Utilisateur non trouvé !');
-        return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-      }
-      const id = req.params.id;
-      User.destroy({
-        where: { id: id }
-      })
-        .then(num => {
-          if (num == 1) {
-            res.send({
-              message: "User was deleted successfully!"
-            });
-          } else {
-            res.send({
-              message: `Cannot delete User with id=${id}. Maybe User was not found!`
-            });
-          }
-        })
-        .catch(err => {
-          console.log('bug'); res.status(500).send({ message: "Could not delete User with id=" + id });
+
+  const id = req.params.id;
+  User.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "User was deleted successfully!"
         });
-    }
-    )
-    .catch(error => res.status(500).json({ error }));
+      } else {
+        res.send({
+          message: `Cannot delete User with id=${id}. Maybe User was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      console.log('bug'); res.status(500).send({ message: "Could not delete User with id=" + id });
+    });
 }
 
 
-// exports.delete = (req, res, next) => {
-//   // que l user correspond a celui envoyé dans la requete 
-//   User.findOne({ email: req.body.email })
-//     .then(user => {
-//       // si on a recuperer un user ou non 
-//       if (!user) {
-//         console.log('Utilisateur non trouvé !');
-//         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
-//       }
 
-//       // on compare le mdp envoyé avec le user recuperer
-//       bcrypt.compare(req.body.password, user.password)
-//         .then(valid => {
-//           if (!valid) {
-//             console.log('Mot de passe incorrect !');
-//             return res.status(401).json({ error: 'Mot de passe incorrect !' });
-//           }
-//           let id = req.params.id
-
-//           User.destroy({
-//             where: { id: id }
-//           }).then(() => {
-//             console.log("pas good");
-//             return res.status(200).json({
-//               "message": "User Deleted successfully"
-//             })
-//           }).catch(err => {
-//             console.log("pas good");
-//             return res.status(400).json({ error })
-//           })
-//         })
-//         .catch(error => { console.log(error); res.status(500).json({ error }) });
-//     })
-//     .catch(error => res.status(500).json({ error }));
-// };
