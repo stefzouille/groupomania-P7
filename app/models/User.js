@@ -8,8 +8,11 @@ module.exports = (sequelize, Sequelize) => {
     },
     password: {
       type: Sequelize.STRING(64),
+    },
+    isAdmin: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     }
-
   });
   return User;
 };

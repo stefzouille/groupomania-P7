@@ -5,10 +5,12 @@ const router = express.Router();
 const postCtrl = require('../controllers/post_controller');
 
 // creer routes pour les posts
-// router.get('/', postCtrl.getAll);
-// router.get('/:id', postCtrl.getOne);
+router.get('/', postCtrl.getAll);
+router.get('/:id', postCtrl.getOne);
+router.get("/published", postCtrl.getAllPublished);
 router.post('/', postCtrl.create);
-// router.put('/:id', postCtrl.update);
-// router.delete('/:id', postCtrl.delete);
+router.put('/:id', postCtrl.update);
+router.delete('/:id', postCtrl.deleteOne);
+router.delete('/', postCtrl.deleteAll);
 
 module.exports = router;
