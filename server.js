@@ -11,6 +11,7 @@ require("./app/routes/tutorial.routes")(app);
 
 //import des routes
 const userRoutes = require('./app/routes/user');
+const postRoutes = require('./app/routes/post');
 
 
 var corsOptions = {
@@ -53,6 +54,8 @@ db.sequelize.sync()
 app.use('/images', express.static(path.join(__dirname, 'images')));
 // pour la routes auth 
 app.use('/auth', userRoutes);
+// pour la routes post
+app.use('/post', postRoutes);
 
 
 
