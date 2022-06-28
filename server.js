@@ -15,7 +15,7 @@ const postRoutes = require('./app/routes/post');
 
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: process.env.ORIGINE
 };
 
 app.use(express.json());

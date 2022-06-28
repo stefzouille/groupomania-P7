@@ -67,9 +67,7 @@ exports.signup = (req, res, next) => {
               // alert('username existe deja')
               return res.status(400).json({ message: "UserName existe déjà !" })
             }
-
             // si tout est ok
-
             else {
               // creation du hash du mdp defini sur 10tours
               bcrypt.hash(req.body.password, 10)
@@ -92,7 +90,6 @@ exports.signup = (req, res, next) => {
           })
       }
     })
-
 }
 
 exports.login = (req, res, next) => {
