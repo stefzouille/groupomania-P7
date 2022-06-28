@@ -55,29 +55,44 @@ exports.signup = (req, res, next) => {
         // console.log('email existe deja')
         // alert('email existe deja')
         return res.status(400).json({ message: "Email existe déjà !" })
-      } else {
+      }
+      //verif si username existe pas
+      if (req.body.userName) {
+        User.findOne({ where: { userName: req.body.userName } })
+          .then(user => {
+            if (user) {
+              // si l username existe deja
+              // on renvoie un message d erreur
+              // console.log('username existe deja')
+              // alert('username existe deja')
+              return res.status(400).json({ message: "UserName existe déjà !" })
+            }
 
+            // si tout est ok
 
-
-        // creation du hash du mdp defini sur 10tours
-        bcrypt.hash(req.body.password, 10)
-          // on recupere le mdp crypté/ hash du mdp
-          .then(hash => {
-            // enregistrement du nouveau user 
-            const user = {
-              email: req.body.email,
-              password: hash,
-              userName: req.body.userName,
-              isAdmin: false
+            else {
+              // creation du hash du mdp defini sur 10tours
+              bcrypt.hash(req.body.password, 10)
+                // on recupere le mdp crypté/ hash du mdp
+                .then(hash => {
+                  // enregistrement du nouveau user 
+                  const user = {
+                    email: req.body.email,
+                    password: hash,
+                    userName: req.body.userName,
+                    isAdmin: false
+                  };
+                  // enregistrement dans la base de donnée
+                  User.create(user)
+                    .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+                    .catch(error => { console.log(error); res.status(400).json({ error }) });
+                })
+                .catch(error => { console.log(error); res.status(500).json({ error }) });
             };
-            // enregistrement dans la base de donnée
-            User.create(user)
-              .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-              .catch(error => { console.log(error); res.status(400).json({ error }) });
           })
-          .catch(error => { console.log(error); res.status(500).json({ error }) });
-      };
+      }
     })
+
 }
 
 exports.login = (req, res, next) => {
