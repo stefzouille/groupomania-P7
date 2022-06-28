@@ -1,10 +1,13 @@
-.lmj-banner {
+.gpm-banner {
+  display: flex;
   color: black;
   text-align: center;
+
   padding: 32px;
   border-bottom: solid 3px black;
 }
 
-.lmj-logo {
-  width: 2%;
+.gpm-logo {
+  width: 7%;
+  margin-right: 20px;
 }

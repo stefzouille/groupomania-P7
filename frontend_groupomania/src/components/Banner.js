@@ -1,19 +1,13 @@
 import logo from '../assets/logo.png'
 import '../styles/Banner.css'
 
-// function Banner() {
-//   return <h1>La maison jungle</h1>
-//   //    <div className='lmj-banner'>
-//   //     <h1>La maison jungle</h1>
-//   // </div >
-// }
 
 function Banner() {
-  const title = 'La maison jungle'
+  const title = 'Groupomania Social Network'
   return (
-    <div className='lmj-banner'>
-      <img src={logo} alt='La maison jungle' className='lmj-logo' />
-      <h1 className='lmj-title'>{title}</h1>
+    <div className='gpm-banner'>
+      <img src={logo} alt='Groupomania' className='gpm-logo' />
+      <h1 className='gpm-title'>{title}</h1>
     </div>
   )
 }
