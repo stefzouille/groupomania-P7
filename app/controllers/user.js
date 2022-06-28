@@ -45,24 +45,40 @@ exports.signup = (req, res, next) => {
 
     // return res.status(400).json({ message: 'Le mot de passe doit respecter les conditions' })
   }
-  // creation du hash du mdp defini sur 10tours
-  bcrypt.hash(req.body.password, 10)
-    // on recupere le mdp crypté/ hash du mdp
-    .then(hash => {
-      // enregistrement du nouveau user 
-      const user = {
-        userName: req.body.userName,
-        email: req.body.email,
-        password: hash,
-        isAdmin: false
+
+  //verifier email existe pas
+  User.findOne({ where: { email: req.body.email } })
+    .then(user => {
+      if (user) {
+        // si l email existe deja
+        // on renvoie un message d erreur
+        // console.log('email existe deja')
+        // alert('email existe deja')
+        return res.status(400).json({ message: "Email existe déjà !" })
+      } else {
+
+
+
+        // creation du hash du mdp defini sur 10tours
+        bcrypt.hash(req.body.password, 10)
+          // on recupere le mdp crypté/ hash du mdp
+          .then(hash => {
+            // enregistrement du nouveau user 
+            const user = {
+              email: req.body.email,
+              password: hash,
+              userName: req.body.userName,
+              isAdmin: false
+            };
+            // enregistrement dans la base de donnée
+            User.create(user)
+              .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+              .catch(error => { console.log(error); res.status(400).json({ error }) });
+          })
+          .catch(error => { console.log(error); res.status(500).json({ error }) });
       };
-      // enregistrement dans la base de donnée
-      User.create(user)
-        .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-        .catch(error => { console.log(error); res.status(400).json({ error }) });
     })
-    .catch(error => { console.log(error); res.status(500).json({ error }) });
-};
+}
 
 exports.login = (req, res, next) => {
   // que l user correspond a celui envoyé dans la requete 
