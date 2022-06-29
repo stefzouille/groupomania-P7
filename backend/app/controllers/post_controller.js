@@ -19,19 +19,35 @@ exports.create = (req, res) => {
     description: req.body.description,
     published: req.body.published ? req.body.published : false
   };
-  // Save Post in the database
-  Post.create(post)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Post."
+  // verifier si le post existe deja
+  Post.findOne({
+    where: {
+      title: req.body.title
+    }
+  }).then(post => {
+    if (post) {
+      res.status(400).send({
+        message: "Post already exists!"
       });
-    });
-};
+      return;
+    } else {
+      // Save Post in the database
+      Post.create(post)
+        .then(data => {
+          res.send(data);
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Post."
+          });
+        });
+    };
+  }
+  );
+}
+
 
 // Retrieve all Posts from the database.
 exports.getAll = (req, res) => {
