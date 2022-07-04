@@ -1,22 +1,15 @@
 import logo from './logo.svg';
 import '../App.css';
+import FormSignup from './Form_signup';
 
 function App() {
   return (
     <div className="App">
+
+      <FormSignup />
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Groupomania
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Groupomania
-        </a>
       </header>
     </div>
   );
