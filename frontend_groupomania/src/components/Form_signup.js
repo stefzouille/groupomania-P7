@@ -16,9 +16,8 @@ class FormSignup extends Component {
             <input type="password" className="form-control" id="password" placeholder="Password" />
           </div>
           <div className="form-group">
-            <label htmlFor="userName">userName</label>
+            <label htmlFor="userName">Username</label>
             <input type="text" className="form-control" id="userName" placeholder="userName" />
-
           </div>
           <input type="submit" value="Signup" onClick={sendToApi} />
 
@@ -26,38 +25,85 @@ class FormSignup extends Component {
       </div>
     );
 
+    //  recuperer les données du formulaire
+    function sendToApi() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const userName = document.getElementById('userName').value;
+      console.log(email, password, userName);
 
+      // envoyer les données a l api
+      // var email = document.getElementById('email').value;
+      // var password = document.getElementById('password').value;
+      // var userName = document.getElementById('userName').value;
 
-    function sendToApi(event) {
-      event.preventDefault();
-      console.log('sendToApi');
-      //recuperer les données du formulaire
       const data = {
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        userName: document.getElementById('userName').value
-      };
-      const url = 'http://localhost:5000/auth/signup';
-      var searchParams = new URLSearchParams(window.location.search);
-      console.log(searchParams.get('redirect'));
-      //envoyer les données au serveur
-      fetch(url)
-        //    {
-        //   body: JSON.stringify(data)
-        // })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
+        email: email,
+        password: password,
+        userName: userName
+      }
+      fetch('http://localhost:5000/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(res => { console.log(res); res.json() })
+
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+
+      window.location.href = 'http://localhost:3000/signup';
 
 
-        }
-        )
-        .catch(error => console.error(error))
+
 
     }
   }
 }
-// sendToApi()
+
+
+
+
+
+
+
+
+
+
+
+
+//     function sendToApi(event) {
+//       event.preventDefault();
+//       console.log('sendToApi');
+//       //recuperer les données du formulaire
+//       const data = {
+//         email: document.getElementById('email').value,
+//         password: document.getElementById('password').value,
+//         userName: document.getElementById('userName').value
+//       };
+//       const url = 'http://localhost:5000/auth/signup';
+//       var searchParams = new URLSearchParams(window.location.search);
+//       console.log(searchParams.get('redirect'));
+//       //envoyer les données au serveur
+//       fetch(url)
+//         //    {
+//         //   body: JSON.stringify(data)
+//         // })
+//         .then(response => response.json())
+//         .then(data => {
+//           console.log(data);
+
+
+//         }
+//         )
+//         .catch(error => console.error(error))
+
+//     }
+//   }
+// }
+
 
 
 
