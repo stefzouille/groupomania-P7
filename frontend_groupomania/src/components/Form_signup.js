@@ -42,34 +42,43 @@ class FormSignup extends Component {
         password: password,
         userName: userName
       }
+
+      // sendToApi(data.
+      //   e.preventDefault(),)
       fetch('http://localhost:5000/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
+
       })
-        .then(res => { console.log(res); res.json() })
+        // affiche le resultat de la requete
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        }
+        )
+        .catch(error => {
+          console.log(error);
+        }
+        )
+      // affiche data sur le frontend
+      // .then(() => {
 
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+      //   // affiche le message de succes
+      //   alert('Utilisateur créé !');
+      // }
+      // )
 
-      window.location.href = 'http://localhost:3000/signup';
 
-
-
+      // renvoi sur la page d accueil
+      window.location.href = 'http://localhost:3000/';
 
     }
   }
+
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -104,7 +113,5 @@ class FormSignup extends Component {
 //   }
 // }
 
-
-
-
 export default FormSignup;
+
