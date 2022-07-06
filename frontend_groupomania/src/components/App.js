@@ -2,7 +2,8 @@ import React from 'react';
 // import logo from './logo.svg';
 import '../App.css';
 import FormSignup from './FormSignup';
-import { BrowserRouter, Routes, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Switch from 'react-switch';
 
 class App extends React.Component {
 
@@ -20,14 +21,21 @@ class App extends React.Component {
 
           <hr />
           <div className="main-route-place">
-            <Switch>
+            {/* renvoie le component FormSignup */}
+            <Routes>
+
+              <Route path="/FormSignup" />
+
+            </Routes>
+
+            {/* <Switch>
               <Route path="/FormSignup" >
                 <FormSignup />
               </Route>
-            </Switch>
+            </Switch> */}
           </div>
         </div>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
 
