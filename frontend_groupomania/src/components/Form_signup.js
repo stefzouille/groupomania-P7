@@ -26,7 +26,8 @@ class FormSignup extends Component {
     );
 
     //  recuperer les données du formulaire
-    function sendToApi() {
+    function sendToApi(e) {
+      e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const userName = document.getElementById('userName').value;
@@ -43,8 +44,6 @@ class FormSignup extends Component {
         userName: userName
       }
 
-      // sendToApi(data.
-      //   e.preventDefault(),)
       fetch('http://localhost:5000/auth/signup', {
         method: 'POST',
         headers: {
@@ -57,23 +56,15 @@ class FormSignup extends Component {
         .then(response => response.json())
         .then(data => {
           console.log(data);
+
         }
         )
+
         .catch(error => {
           console.log(error);
         }
         )
-      // affiche data sur le frontend
-      // .then(() => {
 
-      //   // affiche le message de succes
-      //   alert('Utilisateur créé !');
-      // }
-      // )
-
-
-      // renvoi sur la page d accueil
-      window.location.href = 'http://localhost:3000/';
 
     }
   }
