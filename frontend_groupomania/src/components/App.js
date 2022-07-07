@@ -1,9 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import '../App.css';
-import FormSignup from './FormSignup';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import FormSignup from './FormSignup';
 import Login from './Login';
+import Home from './Home';
 
 class App extends React.Component {
 
@@ -11,14 +12,18 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className='register'>
-          <p>thank you for registering or logging in to be able to take advantage of this magnificent internal communication tool for our company</p>
+          <p>Bonjour, que voulez-vous faire ?</p>
           <ul>
             <li>
-              <Link to="/FormSignup"> FormSignup </Link>
+              <Link to="/FormSignup"> Inscription </Link>
             </li>
             <li>
-              <Link to="/Login"> Login </Link>
+              <Link to="/Login"> Connexion </Link>
             </li>
+            <li>
+              <Link to="/Home"> Accueil </Link>
+            </li>
+
 
           </ul>
 
@@ -28,6 +33,7 @@ class App extends React.Component {
             <Routes>
               <Route path="/FormSignup" element={<FormSignup />} />
               <Route path="/Login" element={<Login />} />
+              <Route path="/Home" element={<Home />} />
             </Routes>
 
           </div>
