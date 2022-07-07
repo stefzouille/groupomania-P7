@@ -4,6 +4,7 @@ import '../App.css';
 import FormSignup from './FormSignup';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Switch from 'react-switch';
+import { Redirect } from 'react-router-dom';
 
 class App extends React.Component {
 
@@ -23,16 +24,10 @@ class App extends React.Component {
           <div className="main-route-place">
             {/* renvoie le component FormSignup */}
             <Routes>
-
-              <Route path="/FormSignup" />
-
+              {/* <Route path="/" element={<FormSignup />} /> */}
+              <Route path="/FormSignup" element={<FormSignup />} />
             </Routes>
 
-            {/* <Switch>
-              <Route path="/FormSignup" >
-                <FormSignup />
-              </Route>
-            </Switch> */}
           </div>
         </div>
       </BrowserRouter >
