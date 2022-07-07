@@ -65,11 +65,13 @@ class FormSignup extends Component {
           .then(response => response.json())
           .then(data => {
             console.log(data);
+            alert(data.message)
 
           }
           )
           .catch(error => {
             console.log(error);
+            alert("Cet utilisateur existe déjà")
           }
           )
 
