@@ -3,19 +3,21 @@ import logo from './logo.svg';
 import '../App.css';
 import FormSignup from './FormSignup';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Switch from 'react-switch';
-import { Redirect } from 'react-router-dom';
+import Login from './Login';
 
 class App extends React.Component {
 
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <p>sdrgsergsege</p>
+        <div className='register'>
+          <p>thank you for registering or logging in to be able to take advantage of this magnificent internal communication tool for our company</p>
           <ul>
             <li>
-              <Link to="/FormSignup">FormSignup</Link>
+              <Link to="/FormSignup"> FormSignup </Link>
+            </li>
+            <li>
+              <Link to="/Login"> Login </Link>
             </li>
 
           </ul>
@@ -24,8 +26,8 @@ class App extends React.Component {
           <div className="main-route-place">
             {/* renvoie le component FormSignup */}
             <Routes>
-              {/* <Route path="/" element={<FormSignup />} /> */}
               <Route path="/FormSignup" element={<FormSignup />} />
+              <Route path="/Login" element={<Login />} />
             </Routes>
 
           </div>
