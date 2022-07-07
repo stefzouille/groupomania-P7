@@ -71,27 +71,12 @@ class FormSignup extends Component {
           )
           .catch(error => {
             console.log(error);
-            alert("Cet utilisateur existe déjà")
+            alert(data.message)
           }
           )
-
       }
-      // .then(response => response.json())
-      // .then(data => {
-      //   console.log(data);
-
-      // }
-      // )
-
-      // .catch(error => {
-      //   console.log(error);
-      // }
-      // )
-
-
     }
   }
-
 }
 
 export default FormSignup;
