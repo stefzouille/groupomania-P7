@@ -31,7 +31,7 @@ class Login extends Component {
       // const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const userName = document.getElementById('userName').value;
-      console.log(password, userName);
+
 
       const data = {
         // email: email,

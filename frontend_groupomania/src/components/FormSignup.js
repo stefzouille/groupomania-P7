@@ -31,7 +31,6 @@ class FormSignup extends Component {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const userName = document.getElementById('userName').value;
-      console.log(email, password, userName);
 
       const data = {
         email: email,
@@ -39,26 +38,53 @@ class FormSignup extends Component {
         userName: userName
       }
 
-      fetch('http://localhost:5000/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
 
-      })
-        // affiche le resultat de la requete
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
+      // affiche le resultat de la requete
+      // si le mail est vide on affiche un message d'erreur
+      if (data.email === "") {
+        alert("Veuillez entrer un email")
+      }
+      else if (data.password === "") {
+        alert("Veuillez entrer un mot de passe")
+      }
+      else if (data.userName === "") {
+        alert("Veuillez entrer un nom d'utilisateur")
+      }
 
-        }
-        )
+      else {
 
-        .catch(error => {
-          console.log(error);
-        }
-        )
+        fetch('http://localhost:5000/auth/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+
+        })
+
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+
+          }
+          )
+          .catch(error => {
+            console.log(error);
+          }
+          )
+
+      }
+      // .then(response => response.json())
+      // .then(data => {
+      //   console.log(data);
+
+      // }
+      // )
+
+      // .catch(error => {
+      //   console.log(error);
+      // }
+      // )
 
 
     }
