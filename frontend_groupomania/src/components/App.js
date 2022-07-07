@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
+import logo from './logo.svg';
 import '../App.css';
 import FormSignup from './FormSignup';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
@@ -29,6 +29,9 @@ class App extends React.Component {
             </Routes>
 
           </div>
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+          </header>
         </div>
       </BrowserRouter >
     );

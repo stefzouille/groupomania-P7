@@ -33,11 +33,6 @@ class FormSignup extends Component {
       const userName = document.getElementById('userName').value;
       console.log(email, password, userName);
 
-      // envoyer les données a l api
-      // var email = document.getElementById('email').value;
-      // var password = document.getElementById('password').value;
-      // var userName = document.getElementById('userName').value;
-
       const data = {
         email: email,
         password: password,
@@ -70,39 +65,6 @@ class FormSignup extends Component {
   }
 
 }
-
-
-
-
-//     function sendToApi(event) {
-//       event.preventDefault();
-//       console.log('sendToApi');
-//       //recuperer les données du formulaire
-//       const data = {
-//         email: document.getElementById('email').value,
-//         password: document.getElementById('password').value,
-//         userName: document.getElementById('userName').value
-//       };
-//       const url = 'http://localhost:5000/auth/signup';
-//       var searchParams = new URLSearchParams(window.location.search);
-//       console.log(searchParams.get('redirect'));
-//       //envoyer les données au serveur
-//       fetch(url)
-//         //    {
-//         //   body: JSON.stringify(data)
-//         // })
-//         .then(response => response.json())
-//         .then(data => {
-//           console.log(data);
-
-
-//         }
-//         )
-//         .catch(error => console.error(error))
-
-//     }
-//   }
-// }
 
 export default FormSignup;
 
