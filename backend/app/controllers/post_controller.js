@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     return;
   }
   // Create a Post
-  const post = {
+  const postData = {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false
@@ -32,7 +32,7 @@ exports.create = (req, res) => {
       return;
     } else {
       // Save Post in the database
-      Post.create(post)
+      Post.create(postData)
         .then(data => {
           res.send(data);
         })

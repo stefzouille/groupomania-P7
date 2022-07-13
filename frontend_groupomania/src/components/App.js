@@ -20,9 +20,9 @@ class App extends React.Component {
             <li>
               <Link to="/Login"> Connexion </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/Home"> Accueil </Link>
-            </li>
+            </li> */}
 
 
           </ul>

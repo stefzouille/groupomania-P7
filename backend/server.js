@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 const db = require("./app/models");
 
 
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
   .then(() => {
     console.log("Synced db.");
   })

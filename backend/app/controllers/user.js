@@ -94,14 +94,15 @@ exports.signup = (req, res, next) => {
 
 exports.login = (req, res, next) => {
   // que l user correspond a celui envoyé dans la requete 
-  User.findOne({ email: req.body.email })
+  User.findOne({ where: { email: req.body.email } })
     .then(user => {
       // si on a recuperer un user ou non 
       if (!user) {
         console.log('Utilisateur non trouvé !');
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
       }
-
+      console.log(user);
+      console.log(req.body.email);
       // on compare le mdp envoyé avec le user recuperer
       bcrypt.compare(req.body.password, user.password)
         .then(valid => {
@@ -109,10 +110,11 @@ exports.login = (req, res, next) => {
             console.log('Mot de passe incorrect !');
             return res.status(401).json({ error: 'Mot de passe incorrect !' });
           }
+          console.log(user.id);
           res.status(200).json({
-            userId: user._id,
+            userId: user.id,
             token: jwt.sign(
-              { userId: user._id },
+              { userId: user.id },
               // clé secrete simple pour dev uniquement
               // pour la production on utilise une clé secrete beaucoup plus longue et plus aleatoire
               `${process.env.SECRETKEY}`,
