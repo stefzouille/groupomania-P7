@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import FormSignup from './FormSignup';
 import Login from './Login';
 import Home from './Home';
+import Createpost from './Create_post';
 
 class App extends React.Component {
 
@@ -34,6 +35,7 @@ class App extends React.Component {
               <Route path="/FormSignup" element={<FormSignup />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Home" element={<Home />} />
+              <Route path="/Create_post" element={<Createpost />} />
             </Routes>
 
           </div>
