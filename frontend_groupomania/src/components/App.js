@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import '../App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import FormSignup from './FormSignup';
@@ -21,11 +21,6 @@ class App extends React.Component {
             <li>
               <Link to="/Login"> Connexion </Link>
             </li>
-            {/* <li>
-              <Link to="/Home"> Accueil </Link>
-            </li> */}
-
-
           </ul>
 
           <hr />
@@ -39,9 +34,7 @@ class App extends React.Component {
             </Routes>
 
           </div>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-          </header>
+
         </div>
       </BrowserRouter >
     );
