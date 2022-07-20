@@ -1,77 +1,53 @@
 // page acceuil
 import React, { Component } from 'react';
 import { useState, useEffect } from 'react';
+import Post from './Post';
+
 // import logo from './logo.svg';
 {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header> */}
 
-// recuperer le post de la base de données
-// function SeePosts() {
-//   const { posts, setPosts } = useState([]);
-//   useState(() => {
-//     fetch('http://localhost:5000/post', {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': 'Bearer ' + localStorage.getItem('token')
-//       }
-//     })
-//       .then(response => response.json())
-//       .then(data => {
-//         if (data.token) {
-//           localStorage.setItem('token', data.token);
-//           // afficher les post de la base de données sur le dom
-//           window.location.href = '/Home';
-//           console.log(data);
-//         }
-//         setPosts(data);
-//       })
-//       .catch(error => console.log(error));
-//   }
-//     , []);
-// }
-// const [isDataLoading, setDataLoading] = useState(false)
-// const [posts, setPosts] = useState([])
 
-// useEffect(() => {
-//   setDataLoading(true)
-//   fetch(`http://localhost:5000/post`)
-//     .then((response) => response.json())
-//     .then(({ }) => {
-
-//       setDataLoading(false)
-//     })
-// }, [])
 
 class Home extends Component {
+
+  // Constructor 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      posts: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:5000/post', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+
+        this.setState({
+          posts: data,
+
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      }
+      )
+  }
+
 
   render() {
     if (localStorage.getItem('token')) {
 
-      // function SeePosts() {
-      //   const { posts, setPosts } = useState([]);
-      //   useState(() => {
-      //     fetch('http://localhost:5000/post', {
-      //       method: 'GET',
-      //       headers: {
-      //         'Content-Type': 'application/json',
-      //         'Authorization': 'Bearer ' + localStorage.getItem('token')
-      //       }
-      //     })
-      //       .then(response => response.json())
-      //       .then(data => {
-      //         if (data.token) {
-      //           localStorage.setItem('token', data.token);
-      //           // afficher les post de la base de données sur le dom
-      //           window.location.href = '/Home';
-      //           console.log(data);
-      //         }
-      //         setPosts(data);
-      //       })
-      //       .catch(error => console.log(error));
-      //   }
-      //     , []);
+      const { posts } = this.state;
 
 
 
@@ -85,7 +61,11 @@ class Home extends Component {
           </button>
           <hr />
           <p>posts recents</p>
-          {/* afficher les posts de la base de données */}
+          {this.state.posts.map((post) => {
+            return <Post key={post.id} data={post} />
+
+          }
+          )}
 
 
         </div>
@@ -97,7 +77,6 @@ class Home extends Component {
     }
 
   }
-
 }
 
 export default Home;
