@@ -53,6 +53,10 @@ class Login extends Component {
           if (data.token) {
             localStorage.setItem('token', data.token);
             window.location.href = '/Home';
+
+          } else {
+            // console.log(data);
+            alert('email ou mot de passe incorrect');
           }
 
         }

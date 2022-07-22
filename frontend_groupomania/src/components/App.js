@@ -12,6 +12,8 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
+        {/* cacher une fois connecté */}
+
         <div className='register'>
           <p>Bonjour, que voulez-vous faire ?</p>
           <ul>
@@ -41,37 +43,6 @@ class App extends React.Component {
   }
 
 }
-
-
-// function App() {
-//   return (
-//     // <BrowserRouter>
-//     //   <Link to="/signup" /> FormSignup </Link>
-//     // </BrowserRouter >
-//     // route pour la page d'inscription
-//     <BrowserRouter>
-//       <div>
-
-//         <Link to="/">Home</Link>
-//       </div>
-
-
-
-//       <div className="App">
-//         {/* bouton renvoie vers la page de signup */}
-
-
-
-//         {/* <FormSignup /> */}
-
-
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//         </header>
-//       </div>
-//     </BrowserRouter>
-//   )
-// }
 
 
 export default App;

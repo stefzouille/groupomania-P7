@@ -1,26 +1,21 @@
 // page acceuil
 import React, { Component } from 'react';
-import { useState, useEffect } from 'react';
 import Post from './Post';
+import '../styles/Home.css';
 
 // import logo from './logo.svg';
 {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header> */}
 
-
-
 class Home extends Component {
-
   // Constructor 
   constructor(props) {
     super(props);
-
     this.state = {
       posts: []
     }
   }
-
   componentDidMount() {
     fetch('http://localhost:5000/post', {
       method: 'GET',
@@ -31,10 +26,8 @@ class Home extends Component {
     })
       .then(response => response.json())
       .then(data => {
-
         this.setState({
-          posts: data,
-
+          posts: data
         });
       })
       .catch(error => {
@@ -43,14 +36,9 @@ class Home extends Component {
       )
   }
 
-
   render() {
     if (localStorage.getItem('token')) {
-
       const { posts } = this.state;
-
-
-
       return (
         <div>
           <h1>Bienvenue sur Groupomania</h1>
@@ -61,22 +49,22 @@ class Home extends Component {
           </button>
           <hr />
           <p>posts recents</p>
-          {this.state.posts.map((post) => {
-            return <Post key={post.id} data={post} />
-
+          {/* afficher les posts */}
+          {posts.map(post => {
+            return (
+              <Post key={post.id} post={post} />
+            )
           }
           )}
-
-
         </div>
       )
-
-
     } else {
       window.location.href = '/Login';
     }
-
   }
 }
 
 export default Home;
+
+
+
