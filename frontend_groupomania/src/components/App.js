@@ -15,7 +15,7 @@ class App extends React.Component {
         {/* cacher une fois connecté */}
 
         <div className='register'>
-          <p>Bonjour, que voulez-vous faire ?</p>
+          {/* <p>Bonjour, que voulez-vous faire ?</p> */}
           <ul>
             <li>
               <Link to="/FormSignup"> Inscription </Link>

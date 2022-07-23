@@ -16,6 +16,8 @@ class Home extends Component {
       posts: []
     }
   }
+
+
   componentDidMount() {
     fetch('http://localhost:5000/post', {
       method: 'GET',
@@ -23,6 +25,8 @@ class Home extends Component {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
+
+
     })
       .then(response => response.json())
       .then(data => {
@@ -39,11 +43,16 @@ class Home extends Component {
   render() {
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
+
+
       return (
         <div>
+
+
           <h1>Bienvenue sur Groupomania</h1>
           {/* afficher bouton onclick renvoi sur la page Create_post */}
           <button onClick={() => {
+
             window.location.href = '/Create_post';
           }}> Créer un post
           </button>

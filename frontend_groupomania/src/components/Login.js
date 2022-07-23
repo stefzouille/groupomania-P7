@@ -26,6 +26,7 @@ class Login extends Component {
       </div>
     );
 
+
     //  recuperer les données du formulaire
     function sendToApi(e) {
       e.preventDefault();
@@ -53,6 +54,7 @@ class Login extends Component {
           if (data.token) {
             localStorage.setItem('token', data.token);
             window.location.href = '/Home';
+
 
           } else {
             // console.log(data);
