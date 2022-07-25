@@ -19,11 +19,11 @@ function App(props) {
 
   return (
     <BrowserRouter>
+      {/* <Redirection /> */}
 
       {/* cacher une fois connecté */}
 
       <div className="register">
-        <Redirection />
         {/* <p>Bonjour, que voulez-vous faire ?</p> */}
         <ul>
           <li>

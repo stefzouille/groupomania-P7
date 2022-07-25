@@ -64,9 +64,8 @@ class FormSignup extends Component {
 
           .then(response => response.json())
           .then(data => {
-            console.log(data);
-            alert(data.message)
 
+            window.location.href = '/Home';
           }
           )
           .catch(error => {

@@ -40,16 +40,18 @@ class Home extends Component {
       )
   }
 
+
   render() {
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
+
 
 
       return (
         <div>
 
 
-          <h1>Bienvenue sur Groupomania</h1>
+          <h1>Bienvenue sur Groupomania {this.data}  </h1>
           {/* afficher bouton onclick renvoi sur la page Create_post */}
           <button onClick={() => {
 
