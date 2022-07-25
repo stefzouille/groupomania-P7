@@ -7,17 +7,17 @@ class Login extends Component {
       <div>
         <form action="" method="post">
           <div className="form-group">
-            <label htmlFor="email">Email address</label>
+            {/* <label htmlFor="email">Email address</label> */}
             <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
             <small id="emailHelp" className="form-text text-muted"></small>
             {/* We'll never share your email with anyone else. */}
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="userName">Username</label>
-            <input type="text" className="form-control" id="userName" placeholder="userName" />
-          </div> */}
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            {/* <label htmlFor="userName">Username</label> */}
+            <input type="text" className="form-control" id="userName" placeholder="userName" />
+          </div>
+          <div className="form-group">
+            {/* <label htmlFor="password">Password</label> */}
             <input type="password" className="form-control" id="password" placeholder="Password" />
           </div>
           <input type="submit" value="Login" onClick={sendToApi} />
@@ -32,12 +32,12 @@ class Login extends Component {
       e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      // const userName = document.getElementById('userName').value;
+      const userName = document.getElementById('userName').value;
 
       const data = {
         email: email,
         password: password,
-        // userName: userName
+        userName: userName
       }
 
       fetch('http://localhost:5000/auth/login', {
@@ -53,6 +53,9 @@ class Login extends Component {
         .then(data => {
           if (data.token) {
             localStorage.setItem('token', data.token);
+            localStorage.setItem('userName', data.userName);
+            console.log(data.userName);
+            // navigate to home page
             window.location.href = '/Home';
 
 

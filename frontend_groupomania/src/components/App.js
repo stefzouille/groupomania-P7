@@ -11,7 +11,7 @@ import FormSignup from "./FormSignup";
 import Login from "./Login";
 import Home from "./Home";
 import Createpost from "./Create_post";
-import Redirection from "./Redirection";
+// import Redirection from "./Redirection";
 
 function App(props) {
 
