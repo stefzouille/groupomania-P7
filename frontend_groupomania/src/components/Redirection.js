@@ -5,22 +5,22 @@ import { useNavigate } from 'react-router-dom';
 function Redirection(props) {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    if (localStorage.getItem("token") && window.location.pathname === "/") {
-      navigate("/Home");
-    }
-  }, []);
+  //   React.useEffect(() => {
+  //     if (localStorage.getItem("token") && window.location.pathname === "/") {
+  //       navigate("/Home");
+  //     }
+  //   }, []);
 
-  return null;
+  //   return null;
+  // }
+
+
+
+  // si user déjà connecté et qu'on est sur / on redirige vers la page home
+  if (localStorage.getItem("token") && window.location.pathname === "/") {
+    window.location.href = '/Home';
+  }
+
 }
-
-
-
-//   // si user déjà connecté et qu'on est sur / on redirige vers la page home
-//   if (localStorage.getItem("token") && window.location.pathname === "/") {
-//     window.location.href = '/Home';
-//   }
-
-// }
 
 export default Redirection;

@@ -11,7 +11,9 @@ import FormSignup from "./FormSignup";
 import Login from "./Login";
 import Home from "./Home";
 import Createpost from "./Create_post";
-// import Redirection from "./Redirection";
+import Redirection from "./Redirection";
+import Navigation from "./Navigation";
+import Modify_post from "./Modify_post";
 
 function App(props) {
 
@@ -19,22 +21,22 @@ function App(props) {
 
   return (
     <BrowserRouter>
-      {/* <Redirection /> */}
+      <Redirection />
 
       {/* cacher une fois connecté */}
 
       <div className="register">
         {/* <p>Bonjour, que voulez-vous faire ?</p> */}
-        <ul>
+        {/* <ul>
           <li>
             <Link to="/FormSignup"> Inscription </Link>
           </li>
           <li>
             <Link to="/Login"> Connexion </Link>
           </li>
-        </ul>
+        </ul> */}
+        <Navigation />
 
-        <hr />
         <div className="main-route-place">
           {/* renvoie le component FormSignup */}
           <Routes>
@@ -42,6 +44,7 @@ function App(props) {
             <Route path="/Login" element={<Login />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Create_post" element={<Createpost />} />
+            <Route path="/Modify_post" element={<Modify_post />} />
           </Routes>
         </div>
       </div>

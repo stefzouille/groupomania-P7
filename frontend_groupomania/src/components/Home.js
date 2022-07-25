@@ -13,8 +13,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: [],
-      user: []
+      posts: []
     }
   }
 
@@ -26,11 +25,13 @@ class Home extends Component {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
+
+
     })
       .then(response => response.json())
       .then(data => {
         this.setState({
-          posts: data,
+          posts: data
         });
       })
       .catch(error => {
@@ -39,40 +40,18 @@ class Home extends Component {
       )
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:5000/auth/user', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer ' + localStorage.getItem('token')
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       this.setState({
-  //         user: data,
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     }
-  //     )
-  // }
-
 
   render() {
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
-      // const { user } = this.state;
-
-
 
 
 
       return (
         <div>
 
-          <h1>Bienvenue sur Groupomania {this.user}  </h1>
+
+          <h1>Bienvenue sur Groupomania {this.data}  </h1>
           {/* afficher bouton onclick renvoi sur la page Create_post */}
           <button onClick={() => {
 
@@ -97,6 +76,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-
-
