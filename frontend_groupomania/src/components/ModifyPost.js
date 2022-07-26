@@ -2,7 +2,7 @@
 // affiche le formulaire de creation de post
 import React from 'react';
 
-function Modify_post() {
+function ModifyPost() {
   return (
     <div>
       <h1>modifier un post</h1>
@@ -35,7 +35,7 @@ function Modify_post() {
       title: title,
       description: description
     }
-    fetch('http://localhost:5000/post/' + data, {
+    fetch('http://localhost:5000/post/', {
       method: 'put',
       headers: {
         'Content-Type': 'application/json'
@@ -47,6 +47,7 @@ function Modify_post() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        ModifyPost();
         window.location.href = '/Home';
       }
       )
@@ -57,4 +58,4 @@ function Modify_post() {
   }
 
 }
-export default Modify_post;
+export default ModifyPost;

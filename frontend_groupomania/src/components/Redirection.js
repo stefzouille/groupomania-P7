@@ -13,9 +13,6 @@ function Redirection(props) {
 
   //   return null;
   // }
-
-
-
   // si user déjà connecté et qu'on est sur / on redirige vers la page home
   if (localStorage.getItem("token") && window.location.pathname === "/") {
     window.location.href = '/Home';

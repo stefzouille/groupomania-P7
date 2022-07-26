@@ -1,4 +1,5 @@
 // creation des posts dans la base de donnée
+const { user } = require("../models");
 const db = require("../models");
 const Post = db.post;
 
@@ -17,7 +18,8 @@ exports.create = (req, res) => {
   const postData = {
     title: req.body.title,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    published: req.body.published ? req.body.published : false,
+    userCreated: req.body.userCreated,
   };
   // verifier si le post existe deja
   Post.findOne({
@@ -33,9 +35,14 @@ exports.create = (req, res) => {
     } else {
       // Save Post in the database
       Post.create(postData)
+        // userCreated avec id de l'utilisateur connecté
         .then(data => {
-          res.send(data);
+          res.send(data = user.findByPk(req.body.userCreated));
+
         })
+        // .then(data => {
+        //   res.send(data);
+        // })
         .catch(err => {
           console.log(err);
           res.status(500).send({

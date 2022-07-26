@@ -13,7 +13,7 @@ import Home from "./Home";
 import Createpost from "./Create_post";
 import Redirection from "./Redirection";
 import Navigation from "./Navigation";
-import Modify_post from "./Modify_post";
+import ModifyPost from "./ModifyPost";
 
 function App(props) {
 
@@ -37,6 +37,7 @@ function App(props) {
         </ul> */}
         <Navigation />
 
+
         <div className="main-route-place">
           {/* renvoie le component FormSignup */}
           <Routes>
@@ -44,7 +45,7 @@ function App(props) {
             <Route path="/Login" element={<Login />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Create_post" element={<Createpost />} />
-            <Route path="/Modify_post" element={<Modify_post />} />
+            <Route path="/ModifyPost" element={<ModifyPost />} />
           </Routes>
         </div>
       </div>

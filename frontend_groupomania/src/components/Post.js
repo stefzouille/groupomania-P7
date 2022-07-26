@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/Card.css';
+import ModifyPost from './ModifyPost';
 
 function Post(props) {
 
@@ -15,45 +16,15 @@ function Post(props) {
       .then(data => {
         console.log(data);
         window.location.reload();
-      }
-      )
+      })
       .catch(error => {
         console.log(error);
-      }
-      )
+      })
   }
 
-  function modifyPost(id) {
-    window.location.href = '/Modify_post/' + id;
-  }
-
-
-  // function modifyPost(id) {
-  //   fetch('http://localhost:5000/post/' + id, {
-  //     method: 'PUT',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'Bearer ' + localStorage.getItem('token')
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       // afficher le formulaire de modification de post
-
-  //       window.location.href = '/Modify_post';
-  //     }
-  //     )
-
-
-  //     .catch(error => {
-  //       console.log(error);
-  //     }
-  //     )
+  // function ModifyPost(id) {
+  //   window.location.href = '/ModifyPost/' + id;
   // }
-
-
-
 
   return (
     <div className="card-cont" >
@@ -63,13 +34,18 @@ function Post(props) {
         <p className="card-text">{props.post.description}</p>
         {/* affiche le boutton modifier */}
         <button onClick={() => {
-          modifyPost(props.post.id);
+          ModifyPost();
+          window.location.href = '/ModifyPost/';
+
+
         }}> Modifier
         </button>
+
 
         {/* affiche button delete */}
         <button onClick={() => {
           deletePost(props.post.id);
+
         }}>Supprimer
         </button>
 
