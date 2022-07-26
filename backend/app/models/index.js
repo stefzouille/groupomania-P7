@@ -23,4 +23,11 @@ db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.user = require("./User.js")(sequelize, Sequelize);
 db.post = require("./Post_model.js")(sequelize, Sequelize);
 
+
+// creer une colonne userid dans la table post
+
+
+
+
+
 module.exports = db;

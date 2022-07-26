@@ -1,5 +1,6 @@
 // affiche le formulaire de creation de post
 import React from 'react';
+import '../styles/CreatePost.css';
 
 function Create_post() {
   return (
@@ -8,12 +9,12 @@ function Create_post() {
       <hr />
       <form action="" method="post">
         <div className="form-group">
-          <label htmlFor="title">Titre </label>
+          {/* <label htmlFor="title">Titre </label> */}
           <input type="text" className="form-control" id="title" placeholder="Titre" />
         </div>
         <div className="form-group">
-          <label htmlFor="description">description </label>
-          <textarea className="form-control" id="description" rows="10"></textarea>
+          {/* <label htmlFor="description">description </label> */}
+          <textarea className="form-control" id="description" rows="15" placeholder="votre message ici"></textarea>
         </div>
         <input type="submit" value="Créer un post" onClick={sendToApi} />
 

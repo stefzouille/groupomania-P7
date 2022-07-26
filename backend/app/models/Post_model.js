@@ -2,7 +2,12 @@ module.exports = (sequelize, Sequelize) => {
   const PostModel = sequelize.define("post", {
     userCreated: {
       type: Sequelize.INTEGER,
-      unique: true
+      unique: true,
+      // allowNull: true,
+      // references: {
+      //   model: "user",
+      //   key: "id"
+      // }
     },
     title: {
       type: Sequelize.STRING
