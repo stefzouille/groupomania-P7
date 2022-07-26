@@ -4,8 +4,8 @@ import '../styles/CreatePost.css';
 
 function Create_post() {
   return (
-    <div>
-      <h1>Créer un post</h1>
+    <div className='formcontrol'>
+      <h1 className='titre'>Créer un post</h1>
       <hr />
       <form action="" method="post">
         <div className="form-group">

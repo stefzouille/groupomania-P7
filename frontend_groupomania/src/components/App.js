@@ -26,15 +26,7 @@ function App(props) {
       {/* cacher une fois connecté */}
 
       <div className="register">
-        {/* <p>Bonjour, que voulez-vous faire ?</p> */}
-        {/* <ul>
-          <li>
-            <Link to="/FormSignup"> Inscription </Link>
-          </li>
-          <li>
-            <Link to="/Login"> Connexion </Link>
-          </li>
-        </ul> */}
+
         <Navigation />
 
 

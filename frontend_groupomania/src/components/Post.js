@@ -1,6 +1,7 @@
 import React from "react";
 import '../styles/Card.css';
 import ModifyPost from './ModifyPost';
+import '../styles/Post.css';
 
 function Post(props) {
 
@@ -25,7 +26,7 @@ function Post(props) {
   // function ModifyPost(id) {
   //   window.location.href = '/ModifyPost/' + id;
   // }
-
+  console.log(props.post);
   return (
     <div className="card-cont" >
       <div className="card-body">
@@ -36,8 +37,6 @@ function Post(props) {
         <button onClick={() => {
           ModifyPost();
           window.location.href = '/ModifyPost/';
-
-
         }}> Modifier
         </button>
 

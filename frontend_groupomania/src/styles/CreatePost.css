@@ -1,10 +1,25 @@
+.formcontrol {
+  margin-left: 35px;
+  padding-left: 25%;
+}
+
+.titre {
+  width: 50%;
+  text-align: center;
+  margin-left: 4%;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
 .form-group {
-  margin: 20px;
+  margin: 10px;
+  background-color: #fafafa;
 }
 
 #title {
+  border: #d80688 solid 1px;
   width: 100%;
-  height: 30px;
+  height: 35px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;

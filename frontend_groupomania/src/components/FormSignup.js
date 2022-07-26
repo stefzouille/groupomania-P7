@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
+import '../styles/FormSignup.css';
 
 class FormSignup extends Component {
   render() {
     return (
-      <div>
+      <div className="formcontrol">
         <form action="" method="post">
           <div className="form-group">
-            <label htmlFor="email">Email address</label>
+            {/* <label htmlFor="email">Email address</label> */}
             <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
             <small id="emailHelp" className="form-text text-muted"></small>
             {/* We'll never share your email with anyone else. */}
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            {/* <label htmlFor="password">Password</label> */}
             <input type="password" className="form-control" id="password" placeholder="Password" />
           </div>
           <div className="form-group">
-            <label htmlFor="userName">Username</label>
+            {/* <label htmlFor="userName">Username</label> */}
             <input type="text" className="form-control" id="userName" placeholder="userName" />
           </div>
-          <input type="submit" value="Signup" onClick={sendToApi} />
+          <input className='signbutton' type="submit" value="Signup" onClick={sendToApi} />
 
         </form>
       </div>

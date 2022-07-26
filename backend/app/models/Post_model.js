@@ -3,11 +3,12 @@ module.exports = (sequelize, Sequelize) => {
     userCreated: {
       type: Sequelize.INTEGER,
       unique: true,
-      // allowNull: true,
-      // references: {
-      //   model: "user",
-      //   key: "id"
-      // }
+
+    },
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     title: {
       type: Sequelize.STRING
@@ -18,6 +19,10 @@ module.exports = (sequelize, Sequelize) => {
     published: {
       type: Sequelize.BOOLEAN
     },
+    Image: {
+      type: Sequelize.STRING
+    }
+
   });
   return PostModel;
 };

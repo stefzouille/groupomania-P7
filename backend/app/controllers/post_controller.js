@@ -36,13 +36,13 @@ exports.create = (req, res) => {
       // Save Post in the database
       Post.create(postData)
         // userCreated avec id de l'utilisateur connecté
-        .then(data => {
-          res.send(data = user.findByPk(req.body.userCreated));
-
-        })
         // .then(data => {
-        //   res.send(data);
+        //   res.send(data = user.findByPk(req.body.userCreated));
+
         // })
+        .then(data => {
+          res.send(data);
+        })
         .catch(err => {
           console.log(err);
           res.status(500).send({

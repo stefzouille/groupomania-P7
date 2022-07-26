@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css';
 
 class Login extends Component {
   render() {
     return (
-      <div>
+      <div className='FormControl'>
         <form action="" method="post">
           <div className="form-group">
             {/* <label htmlFor="email">Email address</label> */}
@@ -20,7 +20,7 @@ class Login extends Component {
             {/* <label htmlFor="password">Password</label> */}
             <input type="password" className="form-control" id="password" placeholder="Password" />
           </div>
-          <input type="submit" value="Login" onClick={sendToApi} />
+          <input className='signbutton' type="submit" value="Login" onClick={sendToApi} />
 
         </form>
       </div>

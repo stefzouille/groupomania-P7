@@ -1,0 +1,36 @@
+/* Link {
+  margin: 10px;
+  background-color: rgb(34, 74, 175);
+  color: aliceblue;
+  border-radius: 15px;
+  /* width: 100px; 
+} */
+
+* {
+  color: #4a5457;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #4a5457;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* width: 70%; */
+  margin-right: 5%;
+
+  background-color: #2b5ddd;
+}
+
+a {
+  color: #ffffff;
+  border: #065dd8;
+  background-color: #065dd8;
+  text-decoration: none;
+}
