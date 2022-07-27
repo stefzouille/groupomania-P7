@@ -2,7 +2,7 @@
 import React from 'react';
 import '../styles/CreatePost.css';
 
-function Create_post() {
+function Create_post(props) {
   return (
     <div className='formcontrol'>
       <h1 className='titre'>Créer un post</h1>
@@ -26,7 +26,7 @@ function Create_post() {
   // recuperer les données du formulaire
   // envoie de la requete pour creer un post
   function sendToApi(e) {
-    console.log(e);
+    // console.log(e);
     e.preventDefault();
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;

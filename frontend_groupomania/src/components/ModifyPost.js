@@ -2,7 +2,7 @@
 // affiche le formulaire de creation de post
 import React from 'react';
 
-function ModifyPost() {
+function ModifyPost(props) {
   return (
     <div>
       <h1>modifier un post</h1>

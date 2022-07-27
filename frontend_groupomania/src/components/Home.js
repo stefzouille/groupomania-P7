@@ -3,10 +3,7 @@ import React, { Component } from 'react';
 import Post from './Post';
 import '../styles/Home.css';
 
-// import logo from './logo.svg';
-{/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header> */}
+
 
 class Home extends Component {
   // Constructor 
@@ -17,7 +14,6 @@ class Home extends Component {
     }
   }
 
-
   componentDidMount() {
     fetch('http://localhost:5000/post', {
       method: 'GET',
@@ -25,12 +21,9 @@ class Home extends Component {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
-
-
     })
       .then(response => response.json())
       .then(data => {
-
         this.setState({
           posts: data
         });
@@ -41,11 +34,9 @@ class Home extends Component {
       )
   }
 
-
   render() {
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
-
       return (
         <div>
           <h1>Bienvenue sur Groupomania</h1>

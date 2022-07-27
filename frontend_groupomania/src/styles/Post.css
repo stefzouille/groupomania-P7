@@ -5,3 +5,50 @@ button {
   border-radius: 15px;
   width: 100px;
 }
+
+* {
+  background-color: rgb(241, 242, 240);
+
+  font-family: 'Roboto', sans-serif;
+}
+
+/* li {
+  display: none;
+} */
+
+.card-cont {
+  /* border: 1px solid rgb(13, 242, 36); */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: auto;
+  margin: 20px;
+  /* text-align: center;
+  background-color: rgb(184, 90, 90);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); */
+}
+
+.card-body {
+  border: 4mm ridge rgba(121, 121, 121, 0.6);
+  width: 60%;
+  height: auto;
+  margin: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.card-title {
+  border: 1px solid rgb(58, 58, 58);
+  padding-bottom: 5px;
+  color: rgb(25, 13, 242);
+}
+
+.card-text {
+  /* border: 1px solid rgb(50, 50, 50); */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: rgb(0, 0, 0);
+}
