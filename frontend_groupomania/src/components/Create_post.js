@@ -16,6 +16,12 @@ function Create_post(props) {
           {/* <label htmlFor="description">description </label> */}
           <textarea className="form-control" id="description" rows="15" placeholder="votre message ici"></textarea>
         </div>
+        <div>
+          {/* // ajouter une image */}
+          <input type="file" id="image" />
+          {/* <button type="submit" className="btn btn-primary">Ajouter une image</button> */}
+        </div>
+
         <input type="submit" value="Créer un post" onClick={sendToApi} />
 
       </form>
@@ -30,10 +36,12 @@ function Create_post(props) {
     e.preventDefault();
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
+    const image = document.getElementById('image').value;
 
     const data = {
       title: title,
-      description: description
+      description: description,
+      image: image
     }
     fetch('http://localhost:5000/post', {
       method: 'POST',

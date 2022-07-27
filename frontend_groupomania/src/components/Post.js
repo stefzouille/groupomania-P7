@@ -33,24 +33,24 @@ function Post(props) {
         <h3 className="card-title">{props.post.title}</h3>
 
         <p className="card-text">{props.post.description}</p>
+
+        {/* affiche l'image du post */}
+        <img className="card-img-top" src={props.post.image} alt="Card image cap" />
+        <hr />
         {/* affiche le boutton modifier */}
         <button onClick={() => {
-          ModifyPost();
-          window.location.href = '/ModifyPost/';
+
+          // chargement du component ModifyPost
+          window.location.href = '/ModifyPost/' + props.post.id;
         }}> Modifier
         </button>
-
-
         {/* affiche button delete */}
         <button onClick={() => {
           deletePost(props.post.id);
-
         }}>Supprimer
         </button>
-
       </div>
-
-    </div>
+    </div >
   )
 }
 

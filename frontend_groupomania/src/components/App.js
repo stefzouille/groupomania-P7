@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../App.css";
+import "../styles/App.css";
 import {
   BrowserRouter,
   Routes,
@@ -37,7 +37,7 @@ function App(props) {
             <Route path="/Login" element={<Login />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Create_post" element={<Createpost />} />
-            <Route path="/ModifyPost" element={<ModifyPost />} />
+            <Route path="/ModifyPost/:id" element={<ModifyPost />} />
           </Routes>
         </div>
       </div>
