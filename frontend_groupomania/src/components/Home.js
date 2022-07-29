@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Post from './Post';
 import '../styles/Home.css';
+import jwt_decode from 'jwt-decode';
 
 
 
@@ -34,21 +35,17 @@ class Home extends Component {
       )
   }
 
-  // recuperer l id de l utilisateur searchparams.id et localstorage.getItem('token')
-
+  // fonction pour recuperer l id de l utilisateur connecté
   getUserId() {
-    const id = localStorage.getItem('id');
-    return id;
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const userId = decoded.userId;
+    return userId;
   }
 
 
-
-
-
-
-
-
   render() {
+
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
       return (
