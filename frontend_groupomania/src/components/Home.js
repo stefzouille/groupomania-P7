@@ -43,8 +43,8 @@ class Home extends Component {
     return userId;
   }
 
-
   render() {
+    console.log(this.getUserId());
 
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
