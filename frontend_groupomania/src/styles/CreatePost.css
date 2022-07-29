@@ -1,12 +1,10 @@
-.formcontrol {
-  margin-left: 35px;
-  padding-left: 25%;
+.formcreate {
+  /* margin: 10px; */
+  padding: 10%;
 }
 
-.titre {
-  width: 50%;
+.titrecreate {
   text-align: center;
-  margin-left: 4%;
   font-size: 20px;
   margin-top: 10px;
 }
@@ -32,5 +30,8 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  resize: none;
+}
+
+.h3img {
+  margin: 20px;
 }

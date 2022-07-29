@@ -4,8 +4,8 @@ import '../styles/CreatePost.css';
 
 function Create_post(props) {
   return (
-    <div className='formcontrol'>
-      <h1 className='titre'>Créer un post</h1>
+    <div className='formcreate'>
+      <h1 className='titrecreate'>Créer un post</h1>
       <hr />
       <form action="" method="post">
         <div className="form-group">
@@ -18,6 +18,7 @@ function Create_post(props) {
         </div>
         <div>
           {/* // ajouter une image */}
+          <h3 className='h3img'>Ajouter une image (facultatif) : </h3>
           <input type="file" id="image" />
           {/* <button type="submit" className="btn btn-primary">Ajouter une image</button> */}
         </div>

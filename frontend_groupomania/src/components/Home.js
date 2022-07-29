@@ -34,6 +34,20 @@ class Home extends Component {
       )
   }
 
+  // recuperer l id de l utilisateur searchparams.id et localstorage.getItem('token')
+
+  getUserId() {
+    const id = localStorage.getItem('id');
+    return id;
+  }
+
+
+
+
+
+
+
+
   render() {
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
@@ -46,7 +60,10 @@ class Home extends Component {
           }
           }>Se déconnecter</button>
 
-          <h1>Bienvenue sur Groupomania</h1>
+          {/* // afficher le nom de l id de l utilisateur connecté */}
+          <h1>Bienvenue {this.getUserId()}</h1>
+          <hr />
+          {/* <h1>Bienvenue sur Groupomania</h1> */}
           {/* afficher bouton onclick renvoi sur la page Create_post */}
           <button onClick={() => {
             window.location.href = '/Create_post';
