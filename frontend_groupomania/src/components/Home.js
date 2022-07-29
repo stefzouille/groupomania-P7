@@ -39,6 +39,13 @@ class Home extends Component {
       const { posts } = this.state;
       return (
         <div>
+          {/* // afficher le bouton se deconnecter si user connecté */}
+          <button className="btn btn-danger" onClick={() => {
+            localStorage.removeItem('token');
+            window.location.href = '/';
+          }
+          }>Se déconnecter</button>
+
           <h1>Bienvenue sur Groupomania</h1>
           {/* afficher bouton onclick renvoi sur la page Create_post */}
           <button onClick={() => {
