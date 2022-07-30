@@ -39,11 +39,11 @@ function ModifyPost(props) {
       <form action="" method="put">
         <div className="form-group">
           <label htmlFor="title">Titre </label>
-          <input type="text" className="form-control" id="title" placeholder="Titre" />
+          <input type="text" className="form-controlTitre" id="title" placeholder="Titre" />
         </div>
         <div className="form-group">
           <label htmlFor="description">description </label>
-          <textarea className="form-control" id="description" rows="10"></textarea>
+          <textarea className="form-controlDescript" id="description" rows="10"></textarea>
         </div>
         <div>
           {/* // ajouter une image */}

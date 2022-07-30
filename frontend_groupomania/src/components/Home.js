@@ -5,7 +5,6 @@ import '../styles/Home.css';
 import jwt_decode from 'jwt-decode';
 
 
-
 class Home extends Component {
   // Constructor 
   constructor(props) {
@@ -44,8 +43,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.getUserId());
-
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
       return (
@@ -54,20 +51,22 @@ class Home extends Component {
           <button className="btn btn-danger" onClick={() => {
             localStorage.removeItem('token');
             window.location.href = '/';
-          }
-          }>Se déconnecter</button>
+          }}>Déconnexion
+          </button>
 
           {/* // afficher le nom de l id de l utilisateur connecté */}
           <h1>Bienvenue {this.getUserId()}</h1>
           <hr />
           {/* <h1>Bienvenue sur Groupomania</h1> */}
+
           {/* afficher bouton onclick renvoi sur la page Create_post */}
-          <button onClick={() => {
+          <button className='boutoCree' onClick={() => {
             window.location.href = '/Create_post';
           }}> Créer un post
           </button>
           <hr />
-          <p>posts recents</p>
+          <p>Les posts recents : </p>
+
           {/* afficher les posts */}
           {posts.map(post => {
             return (

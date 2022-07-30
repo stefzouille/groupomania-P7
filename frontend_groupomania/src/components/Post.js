@@ -38,14 +38,14 @@ function Post(props) {
         <img className="card-img-top" src={props.post.image} alt="Card image cap" />
         <hr />
         {/* affiche le boutton modifier */}
-        <button onClick={() => {
+        <button className="boutoModif" onClick={() => {
 
           // chargement du component ModifyPost
           window.location.href = '/ModifyPost/' + props.post.id;
         }}> Modifier
         </button>
         {/* affiche button delete */}
-        <button onClick={() => {
+        <button className="boutoSupp" onClick={() => {
           deletePost(props.post.id);
         }}>Supprimer
         </button>

@@ -1,10 +1,10 @@
-button {
+/* button {
   margin: 10px;
   background-color: rgb(34, 74, 175);
   color: aliceblue;
   border-radius: 15px;
   width: 100px;
-}
+} */
 
 .form-group {
   display: flex;
@@ -13,4 +13,20 @@ button {
   justify-content: center;
   width: auto;
   margin: 20px;
+  font-size: 30px;
+}
+
+/* .form-controlTitre::before {
+  background-color: #fcfffc;
+  color: rgb(39, 39, 39);
+} */
+
+.form-controlTitre:hover {
+  background-color: #adaead;
+  color: rgb(39, 39, 39);
+}
+
+.form-controlDescript:hover {
+  background-color: #b9b6b6;
+  color: rgb(62, 61, 61);
 }
