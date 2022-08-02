@@ -51,26 +51,22 @@ function Create_post(props) {
       },
       body: JSON.stringify(data)
     })
-    // si le formulaire est vide, affiche un message d'erreur
-    if (title === '' || description === '') {
-      alert('Veuillez remplir tous les champs');
-    }
-    else {
-      alert('Votre post a été créé')
-        // affiche le resultat de la requete
-        .then(response => response.json())
-        .then(data => {
+      // affiche le resultat de la requete
+      .then(response => response.json())
+      .then(data => {
+        // si le formulaire est vide, affiche un message d'erreur
+        if (title === '' || description === '') {
+          alert('Veuillez remplir tous les champs');
+        } else {
+          // alert('Votre post a été créé');
           console.log(data);
           window.location.reload();
           window.location.href = '/Home';
         }
-        )
-        .catch(error => {
-          console.log(error);
-        }
-        )
-    }
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
-
 }
 export default Create_post;

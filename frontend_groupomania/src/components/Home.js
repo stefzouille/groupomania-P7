@@ -42,6 +42,14 @@ class Home extends Component {
     return userId;
   }
 
+  // afficher l userName 
+  getUserName() {
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const userName = decoded.userName;
+    return userName;
+  }
+
   render() {
     if (localStorage.getItem('token')) {
       const { posts } = this.state;
@@ -55,9 +63,8 @@ class Home extends Component {
           </button>
 
           {/* // afficher le nom de l id de l utilisateur connecté */}
-          <h1>Bienvenue {this.getUserId()}</h1>
+          <h1>Bienvenue {this.getUserName()}</h1>
           <hr />
-          {/* <h1>Bienvenue sur Groupomania</h1> */}
 
           {/* afficher bouton onclick renvoi sur la page Create_post */}
           <button className='boutoCree' onClick={() => {

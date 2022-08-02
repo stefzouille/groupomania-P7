@@ -37,18 +37,35 @@ function Post(props) {
         {/* affiche l'image du post */}
         <img className="card-img-top" src={props.post.image} alt="Card image cap" />
         <hr />
+
         {/* affiche le boutton modifier */}
         <button className="boutoModif" onClick={() => {
+          // seulement l user qui a ecrit le post peut le modifier
+          if (props.post.user === localStorage.getItem('user')) {
+            ModifyPost(props.post._id);
+          } else {
+            alert('Vous n\'avez pas le droit de modifier ce post');
+          }
+        }
+        }>Modifier</button>
+        {/* // chargement du component ModifyPost
+        window.location.href = '/ModifyPost/' + props.post.id; */}
 
-          // chargement du component ModifyPost
-          window.location.href = '/ModifyPost/' + props.post.id;
-        }}> Modifier
-        </button>
-        {/* affiche button delete */}
+
+
+        {/* affiche button delete  */}
         <button className="boutoSupp" onClick={() => {
-          deletePost(props.post.id);
-        }}>Supprimer
+          // seulement l user qui a ecrit le post peut le supprimer
+
+          if (props.post.user_id === localStorage.getItem('user_id')) {
+            deletePost(props.post.id)
+          } else {
+            alert('Vous n\'avez pas le droit de supprimer ce post');
+          }
+        }
+        }> Supprimer
         </button>
+
       </div>
     </div >
   )
