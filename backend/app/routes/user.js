@@ -10,7 +10,7 @@ router.post('/login', userCtrl.login);
 router.delete('/:id', userCtrl.delete);
 router.put('/:id', userCtrl.update);
 router.get('/:id', userCtrl.getOne);
-// router.get('/', userCtrl.getAll);
+router.get('/', userCtrl.getAll);
 
 
 

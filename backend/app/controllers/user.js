@@ -205,14 +205,17 @@ exports.getOne = (req, res) => {
 
 
 // // get all users
-// exports.getAll = (req, res) => {
-//   User.findAll()
-//     .then(users => {
-//       res.send(users);
-//     }).catch(err => {
-//       res.status(500).send({ message: err.message || "Some error occurred while retrieving users." });
-//     }
-//     );
-// }
+exports.getAll = (req, res) => {
+  User.findAll()
+    .then(users => {
+      res.send(users);
+    }
+    )
+    .catch(err => {
+      res.status(500).send({ message: err.message });
+    }
+    );
+}
+
 
 
