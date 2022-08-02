@@ -114,7 +114,7 @@ exports.login = (req, res, next) => {
           res.status(200).json({
             userId: user.id,
             token: jwt.sign(
-              { userId: user.id },
+              { userId: user.id, isAdmin: user.isAdmin, userName: user.userName },
               // clé secrete simple pour dev uniquement
               // pour la production on utilise une clé secrete beaucoup plus longue et plus aleatoire
               `${process.env.SECRETKEY}`,
@@ -183,3 +183,36 @@ exports.update = (req, res) => {
     })
     .catch(error => { console.log(error); res.status(500).json({ error }) });
 }
+
+// get one users
+exports.getOne = (req, res) => {
+
+  User.findByPk(req.params.id)
+
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({ message: "User not found!" });
+      }
+      res.send(user);
+    }
+    )
+    .catch(err => {
+      res.status(500).send({ message: "Error retrieving User with id=" + req.params.id });
+    }
+    );
+}
+
+
+
+// // get all users
+// exports.getAll = (req, res) => {
+//   User.findAll()
+//     .then(users => {
+//       res.send(users);
+//     }).catch(err => {
+//       res.status(500).send({ message: err.message || "Some error occurred while retrieving users." });
+//     }
+//     );
+// }
+
+

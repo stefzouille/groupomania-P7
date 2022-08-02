@@ -12,6 +12,7 @@ require("./app/routes/tutorial.routes")(app);
 //import des routes
 const userRoutes = require('./app/routes/user');
 const postRoutes = require('./app/routes/post');
+// const getRoutes = require('./app/routes/get');
 
 
 var corsOptions = {
@@ -64,6 +65,12 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/auth', userRoutes);
 // pour la routes post
 app.use('/post', postRoutes);
+// pour la routes get
+// app.use('/get', getRoutes);
+
+
+
+
 
 
 
