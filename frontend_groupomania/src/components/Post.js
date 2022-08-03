@@ -31,7 +31,7 @@ function Post(props) {
         <p className="card-text">{props.post.description}</p>
 
         {/* affiche l'image du post */}
-        <img className="card-img-top" src={props.post.image} alt="Card image cap" />
+        <img className="card-img-top" src={props.post.image} alt="Card cap" />
         <hr />
 
         {/* affiche le boutton modifier */}
