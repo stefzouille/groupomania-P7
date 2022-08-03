@@ -37,8 +37,17 @@ function Post(props) {
         {/* affiche le boutton modifier */}
         <button className="boutoModif" onClick={() => {
           // seulement l user qui a ecrit le post peut le modifier
-          if (props.post.user === localStorage.getItem('user')) {
-            ModifyPost(props.post._id);
+          console.log(props.post.userCreated);
+          console.log(localStorage.getItem('userId'));
+          if (props.post.userCreated == localStorage.getItem('userId')) {
+            console.log('ok');
+            return <ModifyPost id={props.post._id} />
+
+
+
+            // window.location.href = '/modifyPost';
+
+            // ModifyPost(props.post.id)
           } else {
             alert('Vous n\'avez pas le droit de modifier ce post');
           }

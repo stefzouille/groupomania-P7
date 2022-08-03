@@ -19,7 +19,7 @@ exports.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
-    userCreated: req.body.userCreated,
+    userCreated: res.locals.userId
   };
   // verifier si le post existe deja
   Post.findOne({

@@ -7,9 +7,8 @@ function ModifyPost(props) {
   // recupere l'id du post a modifier dans l'url et le stocke dans la variable id 
 
   var url = window.location.href;
-  var id = url.substring(url.lastIndexOf('/') + 1);
-
-
+  console.log(props);
+  var id = props;
 
   // recupere le post a modifier dans la base de donnees
   fetch('http://localhost:5000/post/' + id, {
@@ -22,15 +21,13 @@ function ModifyPost(props) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      // recupere le input title et le stocke dans la variable title
-      document.getElementById('title').value = data.title;
-      // recupere le input description et le stocke dans la variable description
-      document.getElementById('description').value = data.description;
+      // // recupere le input title et le stocke dans la variable title
 
 
-
+      // document.getElementById('title').value = data.title;
+      // // recupere le input description et le stocke dans la variable description
+      // document.getElementById('description').value = data.description;
     })
-
   return (
     <div>
       <h1>modifier un post</h1>

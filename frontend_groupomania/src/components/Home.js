@@ -34,13 +34,7 @@ class Home extends Component {
       )
   }
 
-  // fonction pour recuperer l id de l utilisateur connecté
-  getUserId() {
-    const token = localStorage.getItem('token');
-    const decoded = jwt_decode(token);
-    const userId = decoded.userId;
-    return userId;
-  }
+
 
   // afficher l userName 
   getUserName() {

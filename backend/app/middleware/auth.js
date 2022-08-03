@@ -11,12 +11,16 @@ module.exports = (req, res, next) => {
     const decodedToken = jwt.verify(token, `${process.env.SECRETKEY}`);
     // recuper le userId du token
     const userId = decodedToken.userId;
+    console.log(userId);
     // recup le userId de la requete
     req.auth = { userId: userId };
     // recherche de l'utilisateur
     if (req.body.userId && req.body.userId !== userId) {
       throw 'Utilisateur non autorisé !';
     } else {
+      //ds la response, on ajoute le userId
+      res.locals.userId = userId;
+
       next();
     }
   } catch (error) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/Login.css';
+import jwt_decode from 'jwt-decode';
 
 class Login extends Component {
   render() {
@@ -53,6 +54,9 @@ class Login extends Component {
         .then(data => {
           if (data.token) {
             localStorage.setItem('token', data.token);
+            const decoded = jwt_decode(data.token);
+            const userId = decoded.userId;
+            localStorage.setItem('userId', userId);
             // localStorage.setItem('userName', data.userName);
             console.log(data.userName);
             // navigate to home page

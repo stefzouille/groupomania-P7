@@ -2,7 +2,7 @@ module.exports = (sequelize, Sequelize) => {
   const PostModel = sequelize.define("post", {
     userCreated: {
       type: Sequelize.INTEGER,
-      unique: true,
+
 
     },
     id: {
