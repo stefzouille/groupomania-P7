@@ -1,10 +1,10 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
+// import React from "react";
+// import { useNavigate } from 'react-router-dom';
 
 
 
 function Redirection(props) {
-  const navigate = useNavigate();
+
 
   //   React.useEffect(() => {
   //     if (localStorage.getItem("token") && window.location.pathname === "/") {

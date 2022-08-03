@@ -23,10 +23,6 @@ function Post(props) {
       })
   }
 
-  // function ModifyPost(id) {
-  //   window.location.href = '/ModifyPost/' + id;
-  // }
-  console.log(props.post);
   return (
     <div className="card-cont" >
       <div className="card-body">
@@ -48,10 +44,6 @@ function Post(props) {
           }
         }
         }>Modifier</button>
-        {/* // chargement du component ModifyPost
-        window.location.href = '/ModifyPost/' + props.post.id; */}
-
-
 
         {/* affiche button delete  */}
         <button className="boutoSupp" onClick={() => {
