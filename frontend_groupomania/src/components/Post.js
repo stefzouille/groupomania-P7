@@ -40,8 +40,14 @@ function Post(props) {
           console.log(props.post.userCreated);
           console.log(localStorage.getItem('userId'));
           if (props.post.userCreated == localStorage.getItem('userId')) {
+            // envoie vers la page de modification du post et recupere le post a modifier
+            window.location.href = '/modifyPost/' + props.post._id;
+
+
+
+            // window.location.href = 'http://localhost:3000/modifyPost/' + props.post.id;
             console.log('ok');
-            return <ModifyPost id={props.post._id} />
+            return <ModifyPost id={props.post.id} />
 
 
 
