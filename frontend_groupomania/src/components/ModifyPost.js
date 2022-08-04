@@ -21,12 +21,13 @@ function ModifyPost(props) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      // // recupere le input title et le stocke dans la variable title
+      //
+      // affiche le post recupere dans le formulaire
 
 
-      // document.getElementById('title').value = data.title;
-      // // recupere le input description et le stocke dans la variable description
-      // document.getElementById('description').value = data.description;
+
+
+
     })
   return (
     <div>
@@ -102,5 +103,31 @@ function ModifyPost(props) {
       )
   }
 
+  // recuperer le post a modifier dans la base de donnees
+  function getFormulaire() {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // recupere les donnees du post a modifier
+        var title = data.title;
+        var content = data.content;
+        var id = data.id;
+
+        // recuperer le token de l'utilisateur connecte
+        var token = localStorage.getItem('token');
+        // recupere le nom de l'utilisateur connecte
+        var username = localStorage.getItem('username');
+        // recupere l'email de l'utilisateur connecte
+        var email = localStorage.getItem('email');
+      })
+  }
 }
+
 export default ModifyPost;
