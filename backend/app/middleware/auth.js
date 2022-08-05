@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
   try {
+    console.log('tetetetetet');
     // recup le token du header Authorization -- split retourne en tableau le token et le type de token
     const token = req.headers.authorization.split(' ')[1];
     // decoder le token
