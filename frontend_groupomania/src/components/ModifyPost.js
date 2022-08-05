@@ -11,7 +11,7 @@ function ModifyPost(props) {
   var id = props;
 
   // recupere le post a modifier dans la base de donnees
-  fetch('http://localhost:5000/post/' + id, {
+  fetch('http://localhost:5000/post/', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -21,14 +21,24 @@ function ModifyPost(props) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      //
-      // affiche le post recupere dans le formulaire
+      // recupere le post a modifier dans la base de donnees
+      data.forEach(post => {
+        if (post.id == id) {
+          var title = post.title;
+          var content = post.content;
+          var image = post.image;
+          var id = post.id;
+
+        } else {
+          console.log('pas de post');
+        }
+      });
+    }).catch(err => {
+      console.log(err);
+    }
+    );
 
 
-
-
-
-    })
   return (
     <div>
       <h1>modifier un post</h1>
@@ -103,31 +113,6 @@ function ModifyPost(props) {
       )
   }
 
-  // recuperer le post a modifier dans la base de donnees
-  function getFormulaire() {
-    fetch('http://localhost:5000/post/' + id, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // recupere les donnees du post a modifier
-        var title = data.title;
-        var content = data.content;
-        var id = data.id;
-
-        // recuperer le token de l'utilisateur connecte
-        var token = localStorage.getItem('token');
-        // recupere le nom de l'utilisateur connecte
-        var username = localStorage.getItem('username');
-        // recupere l'email de l'utilisateur connecte
-        var email = localStorage.getItem('email');
-      })
-  }
 }
 
 export default ModifyPost;
