@@ -2,8 +2,13 @@ import React from "react";
 // import '../styles/Card.css';
 import ModifyPost from './ModifyPost';
 import '../styles/Post.css';
+import jwt_decode from 'jwt-decode';
+
+
+
 
 function Post(props) {
+
 
   function deletePost(id) {
     fetch('http://localhost:5000/post/' + id, {
@@ -23,15 +28,30 @@ function Post(props) {
       })
   }
 
+  // afficher l userName 
+  function getUserName() {
+    const token = localStorage.getItem('token');
+    const decoded = jwt_decode(token);
+    const userName = decoded.userName;
+    return userName;
+  }
+
+
+
   return (
     <div className="card-cont" >
       <div className="card-body">
-        <h3 className="card-title">{props.post.title}</h3>
+        <h5 className="card-title">{props.title}</h5>
+        <p className="card-text">{props.content}</p>
+        <h2> {getUserName()}</h2>
+        {/* <h3 className="card-title">{props.post.title}</h3> */}
 
         <p className="card-text">{props.post.description}</p>
 
         {/* affiche l'image du post */}
-        <img className="card-img-top" src={props.post.image} alt="Card cap" />
+        <img src={props.post.image} alt="post" className="card-img" />
+
+        {/* <img className="card-img-top" src={props.post.image} alt="Card cap" /> */}
         <hr />
 
         {/* affiche le boutton modifier */}
@@ -77,6 +97,8 @@ function Post(props) {
     </div >
   )
 }
+
+
 
 
 export default Post;
