@@ -37,11 +37,11 @@ function Post(props) {
         {/* affiche le boutton modifier */}
         <button className="boutoModif" onClick={() => {
           // seulement l user qui a ecrit le post peut le modifier
-          // console.log(props.post.userCreated);
-          // console.log(localStorage.getItem('userId'));
+          console.log(props.post.userCreated);
+          console.log(localStorage.getItem('userId'));
           if (props.post.userCreated == localStorage.getItem('userId')) {
             // envoie vers la page de modification du post et recupere le post a modifier
-            window.location.href = '/modifyPost/' + props.post._id;
+            window.location.href = '/modifyPost/' + props.post.id;
 
 
 

@@ -68,10 +68,14 @@ class Home extends Component {
           <hr />
           <p>Les posts recents : </p>
 
-          {/* afficher les posts */}
+          {/* afficher les posts*/}
+
           {posts.map(post => {
             return (
-              <Post key={post.id} post={post} />
+              <Post key={post.id} post={post} src={post.image} alt="image" />
+              // <img src={post.image} alt="image" />
+              // afficher les images
+
             )
           }
           )}

@@ -19,7 +19,8 @@ exports.create = (req, res) => {
     title: req.body.title,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
-    userCreated: res.locals.userId
+    userCreated: res.locals.userId,
+    Image: 'http://localhost:5000/images/' + req.body.imageName
   };
   // verifier si le post existe deja
   Post.findOne({

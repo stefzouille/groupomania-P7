@@ -7,9 +7,6 @@ const db = require("../models");
 const User = db.user
 
 
-
-
-
 var passwordValidator = require('password-validator');
 // securiser le mot de passe
 // on verifie que le mot de passe respecte les conditions
