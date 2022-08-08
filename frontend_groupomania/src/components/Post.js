@@ -28,12 +28,161 @@ function Post(props) {
       })
   }
 
-  // afficher l userName 
-  function getUserName() {
-    const token = localStorage.getItem('token');
-    const decoded = jwt_decode(token);
-    const userName = decoded.userName;
-    return userName;
+
+  // afficher l user name qui a créer le post
+  function getUserName(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.userName;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
+  }
+
+  // afficher le contenu du post
+  function getContent(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.description;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
+  }
+
+  // afficher le contenu du post
+  function getTitle(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.title;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
+  }
+
+  function getDescription(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.description;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
+  }
+  // afficher le contenu du post
+  function getDate(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.date;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
+  }
+  // afficher le contenu du post
+  function getId(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.id;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
+  }
+
+  // // afficher le contenu du post
+  // function getUserId(id) {
+  //   fetch('http://localhost:5000/post/' + id, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer ' + localStorage.getItem('token')
+  //     }
+  //   })
+
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       return data.userId;
+  //     }).catch(error => {
+  //       console.log(error);
+  //     }
+  //     )
+  // }
+
+  // afficher le contenu du post
+  function getImage(id) {
+    fetch('http://localhost:5000/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data.image;
+      }).catch(error => {
+        console.log(error);
+      }
+      )
   }
 
 
@@ -41,12 +190,17 @@ function Post(props) {
   return (
     <div className="card-cont" >
       <div className="card-body">
-        <h5 className="card-title">{props.title}</h5>
-        <p className="card-text">{props.content}</p>
-        <h2> {getUserName()}</h2>
-        {/* <h3 className="card-title">{props.post.title}</h3> */}
-
+        {/* <h5 className="card-title">{props.title}</h5> */}
+        {/* <p className="card-text">{props.content}</p> */}
+        {/* <h2> {getUserName()}</h2> */}
+        <h3 className="card-title">{props.post.title}</h3>
         <p className="card-text">{props.post.description}</p>
+
+        <p className="card-text">{props.post.date}</p>
+        <p className="card-text">{props.post.userName}</p>
+
+
+        {/* <p className="card-text">{props.post.description}</p> */}
 
         {/* affiche l'image du post */}
         <img src={props.post.image} alt="post" className="card-img" />
@@ -57,26 +211,15 @@ function Post(props) {
         {/* affiche le boutton modifier */}
         <button className="boutoModif" onClick={() => {
           // seulement l user qui a ecrit le post peut le modifier
-          console.log(props.post.userCreated);
-          console.log(localStorage.getItem('userId'));
-          if (props.post.userCreated == localStorage.getItem('userId')) {
-            // envoie vers la page de modification du post et recupere le post a modifier
-            window.location.href = '/modifyPost/' + props.post.id;
+          // if (getUserId(props.post.id) === getUserId(localStorage.getItem('userId'))) {
 
 
+          //   console.log('ok');
+          //   return <ModifyPost id={props.post.id} />
 
-            // window.location.href = 'http://localhost:3000/modifyPost/' + props.post.id;
-            console.log('ok');
-            return <ModifyPost id={props.post.id} />
-
-
-
-            // window.location.href = '/modifyPost';
-
-            // ModifyPost(props.post.id)
-          } else {
-            alert('Vous n\'avez pas le droit de modifier ce post');
-          }
+          // } else {
+          //   alert('Vous n\'avez pas le droit de modifier ce post');
+          // }
         }
         }>Modifier</button>
 

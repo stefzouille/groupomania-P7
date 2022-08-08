@@ -11,7 +11,7 @@ function ModifyPost(props) {
   var id = props;
 
   // recupere le post a modifier dans la base de donnees
-  fetch('http://localhost:5000/post/' + id, {
+  fetch('http://localhost:5000/post/', {
     method: 'GET',
     headers: {
 
