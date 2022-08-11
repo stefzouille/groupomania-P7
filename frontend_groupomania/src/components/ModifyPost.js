@@ -6,7 +6,7 @@ import '../styles/ModifyPost.css';
 function ModifyPost(props) {
   // recupere l'id du post a modifier dans l'url et le stocke dans la variable id 
 
-  var url = window.location.href;
+  // var url = window.location.href;
   console.log(props);
   var id = props;
 

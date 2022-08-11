@@ -7,12 +7,9 @@ const app = express();
 
 const path = require('path');
 
-// require("./app/routes/tutorial.routes")(app);
-
 //import des routes
 const userRoutes = require('./app/routes/user');
 const postRoutes = require('./app/routes/post');
-// const getRoutes = require('./app/routes/get');
 
 
 var corsOptions = {
@@ -38,12 +35,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to groupomania server application" });
 });
 
-
-
-
-
 const db = require("./app/models");
-
 
 db.sequelize.sync({ force: false })
   .then(() => {
@@ -53,21 +45,12 @@ db.sequelize.sync({ force: false })
     console.log("Failed to sync db: " + err.message);
   });
 
-
 // servir le dossier image quand on fait une requete avec /images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 // pour la routes auth 
 app.use('/auth', userRoutes);
 // pour la routes post
 app.use('/post', postRoutes);
-// pour la routes get
-// app.use('/get', getRoutes);
-
-
-
-
-
-
 
 // un écouteur d'évènements est également enregistré
 // consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console

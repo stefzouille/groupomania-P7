@@ -34,14 +34,24 @@ function Post(props) {
 
         <p className="card-text">{props.post.description}</p>
         {/* // affiche le bouton like */}
-        <button className="btn btn-primary" onClick={() => props.like(props.post.id)}>Like</button>
+        <button className="btn btn-primary" onClick={() => {
+          if (props.post.likes == true) {
+            props.post.likes = false;
+          } else {
+            props.post.likes = true;
+          }
+        }
+
+        }>
+
+          {props.post.likes == true ? 'Unlike' : 'Like'}
+
+        </button>
+
 
         <i className="fas fa-heart"></i>
 
-
         <p className="card-text">{props.post.likes}</p>
-
-
 
         {/* affiche l'image du post */}
         <img className="card-img-top" src={props.post.image} alt="Card cap" />
@@ -55,7 +65,6 @@ function Post(props) {
           } else {
             alert('vous ne pouvez pas modifier ce post');
           }
-
           // if (props.post.userCreated === localStorage.getItem('userId')) {
           //   ModifyPost(props.post.id)
           // } else {

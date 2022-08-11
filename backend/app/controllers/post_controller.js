@@ -3,7 +3,6 @@ const { user } = require("../models");
 const db = require("../models");
 const Post = db.post;
 
-// const Op = db.Sequelize.Op;
 
 // Create and Save a new Post
 exports.create = (req, res) => {
@@ -56,7 +55,6 @@ exports.create = (req, res) => {
   );
 }
 
-
 // Retrieve all Posts from the database.
 exports.getAll = (req, res) => {
   const title = req.query.title;
@@ -73,7 +71,6 @@ exports.getAll = (req, res) => {
       });
     });
 };
-
 
 // Find a single Post with an id
 exports.getOne = (req, res) => {
@@ -95,7 +92,6 @@ exports.getOne = (req, res) => {
       });
     });
 };
-
 
 // Update a Post by the id in the request
 exports.update = (req, res) => {
@@ -122,7 +118,6 @@ exports.update = (req, res) => {
     });
 };
 
-
 // Delete a Post with the specified id in the request
 exports.deleteOne = (req, res) => {
   const id = req.params.id;
@@ -148,7 +143,6 @@ exports.deleteOne = (req, res) => {
     });
 };
 
-
 // Delete all Post from the database.
 exports.deleteAll = (req, res) => {
   Post.destroy({
@@ -166,7 +160,6 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
-
 
 // Find all published Posts
 exports.getAllPublished = (req, res) => {
