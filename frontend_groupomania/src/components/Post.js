@@ -33,6 +33,16 @@ function Post(props) {
         <h3 className="card-title">{props.post.title}</h3>
 
         <p className="card-text">{props.post.description}</p>
+        {/* // affiche le bouton like */}
+        <button className="btn btn-primary" onClick={() => props.like(props.post.id)}>Like</button>
+
+        <i className="fas fa-heart"></i>
+
+
+        <p className="card-text">{props.post.likes}</p>
+
+
+
         {/* affiche l'image du post */}
         <img className="card-img-top" src={props.post.image} alt="Card cap" />
         <hr />

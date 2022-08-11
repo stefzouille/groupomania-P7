@@ -7,7 +7,7 @@ const app = express();
 
 const path = require('path');
 
-require("./app/routes/tutorial.routes")(app);
+// require("./app/routes/tutorial.routes")(app);
 
 //import des routes
 const userRoutes = require('./app/routes/user');

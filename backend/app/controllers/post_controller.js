@@ -182,3 +182,36 @@ exports.getAllPublished = (req, res) => {
       });
     });
 };
+
+// like a post
+exports.like = (req, res) => {
+  const id = req.params.id;
+  Post.findByPk(id)
+    .then(data => {
+      if (data) {
+        data.update({
+          likes: data.likes + 1
+        })
+          .then(data => {
+            res.send(data);
+          }).catch(err => {
+            console.log(err);
+            res.status(500).send({
+              message:
+                err.message || "Some error occurred while retrieving posts."
+            });
+          }
+          );
+      } else {
+        res.status(404).send({
+          message: `Cannot find Post with id=${id}.`
+        });
+      }
+    }).catch(err => {
+      console.log(err);
+      res.status(500).send({
+        message: "Error retrieving Post with id=" + id
+      });
+    }
+    );
+}
