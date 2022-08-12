@@ -34,7 +34,7 @@ function Post(props) {
 
         <p className="card-text">{props.post.description}</p>
         {/* // affiche le bouton like */}
-        <button className="btn btn-primary" onClick={() => {
+        <button className="btnLikes" onClick={() => {
           if (props.post.likes == true) {
             props.post.likes = false;
           } else {

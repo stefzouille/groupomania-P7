@@ -57,3 +57,7 @@ button {
   background-color: #fd0000;
   color: rgb(16, 16, 16);
 }
+.btnLikes:hover {
+  background-color: #03cc14;
+  color: rgb(16, 16, 16);
+}
